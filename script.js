@@ -1,10 +1,8 @@
 const loadData = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
-    const data = await res.json();
-    const allData = data.data;
-    // console.log(allData)
+    const main = await res.json();
+    const allData = main.data;
     displayData(allData);
-    return allData;
 }
 const convertSecond = (seconds) => {
     let hours = Math.trunc(seconds / 3600);
@@ -32,7 +30,7 @@ const convertSecond = (seconds) => {
         minuteTime = ''
         minutes = ''
     }
-    const result = hours+hourTime+minutes+minuteTime;
+    const result = hours + hourTime + minutes + minuteTime;
     return result;
 
 }
@@ -57,9 +55,9 @@ const cardsContainer = document.getElementById('cards-container')
 const displayData = para => {
     const elements = para;
     elements.forEach(element => {
-        console.log(element)
         const isVerified = `${element.authors[0].verified}`;
-        function vector() {
+        const hasOverlay = `${element.others.posted_date}`
+        const vector = () => {
             if (isVerified == 'true') {
                 return '';
             }
@@ -67,6 +65,15 @@ const displayData = para => {
                 return 'hidden';
             }
         }
+        const overlay = () => {
+            if (hasOverlay == '') {
+                return 'hidden';
+            }
+            else {
+                return '';
+            }
+        }
+        const hide = overlay();
         const isHidden = vector();
         const postedTime = element.others.posted_date;
         const date = convertSecond(postedTime);
@@ -75,7 +82,7 @@ const displayData = para => {
         <div class="card card-compact max-w-xs bg-base-100 pb-3">
         <figure class="h-48 rounded-lg"><img src="${element.thumbnail}" class="overflow-hidden w-[100%] h-[100%] object-cover rounded-lg"  alt="Shoes" />
         <div class="bg-black absolute right-2 top-40 rounded-sm">
-        <h1 class="text-xs text-gray-300 px-2 py-1">${date}</h1>
+        <h1 ${hide} class="text-xs text-gray-300 px-2 py-1">${date}</h1>
         </div>
         </figure>
         <div class="flex py-5 px-3 gap-3">
