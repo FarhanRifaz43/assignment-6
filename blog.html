@@ -9,13 +9,81 @@
 </head>
 
 <body>
-    <main>
-        <h3>Discuss the scope of var, let, and const.</h3>
-        <p></p>
-        <h3>Tell us the use cases of null and undefined.</h3>
-        <p></p>
-        <h3>What do you mean by REST API?</h3>
-        <p></p>
+    <main class="w-fit mx-auto">
+        <div class="mt-5 mx-auto shadow-xl w-[50vw] p-7"><h3 class="font-bold text-xl mb-3">Discuss the scope of var, let, and const.</h3>
+            <hr class="border-2 border-blue-500">
+            <p class="mt-3">The scope of a variable in JavaScript determines where the variable can be accessed in the code. There are
+                three different scopes in JavaScript: <br>
+    
+                Global scope: The global scope is the outermost scope in a JavaScript program. Variables declared in the
+                global scope are accessible from anywhere in the program.<br>
+                Function scope: The function scope is the scope of a function. Variables declared in a function's scope are
+                only accessible from within that function.<br>
+                Block scope: The block scope is the scope of a block of code, such as a if statement or a for loop.
+                Variables declared in a block's scope are only accessible from within that block.<br>
+                The keywords var, let, and const are used to declare variables in JavaScript. The scope of a variable
+                declared with each keyword is as follows:<br>
+    
+                var: Variables declared with the var keyword are function-scoped. This means that they can be accessed from
+                anywhere within the function in which they are declared, as well as from any nested functions.<br>
+                let: Variables declared with the let keyword are block-scoped. This means that they can only be accessed
+                from within the block in which they are declared.<br>
+                const: Variables declared with the const keyword are also block-scoped, but they cannot be reassigned once
+                they are initialized.
+            </p></div>
+       <div class="mt-5 mx-auto shadow-xl w-[50vw] p-7" > <h3 class="font-bold text-xl mb-3">Tell us the use cases of null and undefined.</h3>
+        <hr class="border-2 border-blue-500">
+        <p class="mt-3">
+            The null and undefined values are used in JavaScript to represent the absence of a value.<br>
+
+            Null is used to represent the intentional absence of a value. For example, you might use null to represent a
+            missing value in an object or an array.<br>
+            Undefined is used to represent the unintentional absence of a value. For example, a variable is undefined if
+            it has not been assigned a value yet.<br>
+            Here are some of the use cases of null and undefined:
+            <br>
+            To check if a variable has been assigned a value:<br>
+            To represent a missing value in an object or array:<br>
+            To indicate that an error has occurred:<br>
+            To avoid errors when accessing a property that might not exist:<br>
+            It is important to use null and undefined correctly in JavaScript. By understanding the difference between
+            these two values, you can avoid errors and write more readable and maintainable code.
+        </p></div>
+        <div class="mt-5 mx-auto shadow-md border rounded-lg w-[50vw] p-7"><h3 class="font-bold text-xl mb-3">What do you mean by REST API?</h3>
+            <hr class="border-2 border-blue-500">
+            <p class="mt-3">
+                A REST API (Representational State Transfer Application Programming Interface) is an application programming
+                interface (API) that uses HTTP requests to access and manipulate data. REST APIs are based on the REST
+                architectural style, which defines a set of constraints for how resources are represented and accessed.<br>
+    
+                The main constraints of REST are:
+                <br>
+                Resource identification: Every resource in a REST API is identified by a unique URI (Uniform Resource
+                Identifier).<br>
+                Resource manipulation: Resources can be manipulated using four HTTP methods: GET, POST, PUT, and DELETE.<br>
+                Self-descriptive messages: REST APIs use self-descriptive messages to communicate between the client and the
+                server. This means that the messages should be self-explanatory and should not require any additional
+                information to be understood.<br>
+                Statelessness: REST APIs are stateless. This means that the server does not need to keep track of the state
+                of the client. Each request from the client is treated as a separate transaction.<br>
+                REST APIs are a popular choice for developing web APIs because they are simple and easy to understand. They
+                are also scalable and efficient, making them a good choice for large-scale applications.<br>
+    
+                Some of the benefits of using REST APIs include:<br>
+    
+                Simple and easy to understand<br>
+                Scalable and efficient<br>
+                Platform-independent<br>
+                Language-independent<br>
+                Well-documented<br>
+                Widely supported<br>
+                Some of the drawbacks of using REST APIs include:<br>
+    
+                Can be complex to implement<br>
+                Not as secure as some other APIs<br>
+                Can be difficult to debug<br>
+                Overall, REST APIs are a powerful tool that can be used to develop efficient and scalable web applications.
+            </p></div>
     </main>
 </body>
 
