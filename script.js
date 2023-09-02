@@ -6,6 +6,36 @@ const loadData = async (id) => {
     displayData(allData);
     return allData;
 }
+const convertSecond = (seconds) => {
+    let hours = Math.trunc(seconds / 3600);
+    const remainingSeconds = seconds - (hours * 3600);
+    let minutes = Math.trunc(remainingSeconds / 60);
+    let hourTime = ''
+    let minuteTime = ''
+    if (hours > 1) {
+        hourTime = ` hrs `
+    }
+    else if (hours === 1) {
+        hourTime = ` hr `
+    }
+    else if (hours === 0) {
+        hourTime = ''
+        hours = ''
+    }
+    if (minutes > 1) {
+        minuteTime = ` mins ago`
+    }
+    else if (minutes === 1) {
+        minuteTime = ` min ago`
+    }
+    else if (minutes === 0) {
+        minuteTime = ''
+        minutes = ''
+    }
+    const result = hours+hourTime+minutes+minuteTime;
+    return result;
+
+}
 
 const buttonContainer = document.getElementById('btn-container')
 
@@ -27,7 +57,7 @@ const cardsContainer = document.getElementById('cards-container')
 const displayData = para => {
     const elements = para;
     elements.forEach(element => {
-        // console.log(element)
+        console.log(element)
         const isVerified = `${element.authors[0].verified}`;
         function vector() {
             if (isVerified == 'true') {
@@ -38,10 +68,16 @@ const displayData = para => {
             }
         }
         const isHidden = vector();
+        const postedTime = element.others.posted_date;
+        const date = convertSecond(postedTime);
         const card = document.createElement('card')
         card.innerHTML = `
-        <div class="card card-compact max-w-sm bg-base-100 pb-3">
-        <figure class="max-w-xs h-48 rounded-lg"><img src="${element.thumbnail}" class="h-48 rounded-lg"  alt="Shoes" /></figure>
+        <div class="card card-compact max-w-xs bg-base-100 pb-3">
+        <figure class="h-48 rounded-lg"><img src="${element.thumbnail}" class="overflow-hidden w-[100%] h-[100%] object-cover rounded-lg"  alt="Shoes" />
+        <div class="bg-black absolute right-2 top-40 rounded-sm">
+        <h1 class="text-xs text-gray-300 px-2 py-1">${date}</h1>
+        </div>
+        </figure>
         <div class="flex py-5 px-3 gap-3">
         <img class="w-10 h-10 rounded-full" src="${element.authors[0].profile_picture}">
        <div>
@@ -71,36 +107,5 @@ const category = (id) => {
     loadData(id);
 }
 
-const convertSecond = (seconds) => {
-    let hours = Math.trunc(seconds / 3600);
-    const remainingSeconds = seconds - (hours * 3600);
-    let minutes = Math.trunc(remainingSeconds / 60);
-    let hourTime = ''
-    let minuteTime = ''
-    if (hours > 1) {
-        hourTime = ` hrs`
-    }
-    else if (hours === 1) {
-        hourTime = ` hr`
-    }
-    else if (hours === 0) {
-        hourTime = ''
-        hours = ''
-    }
-    if (minutes > 1) {
-        minuteTime = ` mins`
-    }
-    else if (minutes === 1) {
-        minuteTime = ` min`
-    }
-    else if (minutes === 0) {
-        minuteTime = ''
-        minutes = ''
-    }
-
-    console.log(`${hours}${hourTime}${minutes}${minuteTime} ago`)
-
-}
-convertSecond(60)
 dynamicBtn()
 loadData(1000)
